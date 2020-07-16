@@ -2,46 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeCustomizer.DataAccess;
 using Microsoft.AspNetCore.Mvc;
+using HomeCustomizer.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HomeCustomizer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/shutters")]
     [ApiController]
     public class ShuttersController : ControllerBase
     {
-        // GET: api/<ShuttersController>
+        ShuttersRepo _repository;
+
+        public ShuttersController(ShuttersRepo repository)
+        {
+            _repository = repository;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetShutters()
         {
-            return new string[] { "value1", "value2" };
+            var allShutters = _repository.GetAllShutters();
+
+            return Ok(allShutters);
         }
 
-        // GET api/<ShuttersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("shuttersId/{id}")]
+        public IActionResult GetShuttersById(int id)
         {
-            return "value";
-        }
-
-        // POST api/<ShuttersController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ShuttersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ShuttersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var shutters = _repository.GetShuttersById(id);
+            if (shutters == null)
+            {
+                return NotFound("That shutter option does not exist");
+            }
+            return Ok(shutters);
         }
     }
 }
