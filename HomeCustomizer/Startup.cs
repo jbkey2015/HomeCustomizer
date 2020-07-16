@@ -28,6 +28,7 @@ namespace HomeCustomizer
         {
             services.AddControllers();
             services.AddTransient<ShuttersRepo>();
+            services.AddTransient<SidingRepo>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 

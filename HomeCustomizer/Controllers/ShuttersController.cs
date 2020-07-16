@@ -27,5 +27,16 @@ namespace HomeCustomizer.Controllers
 
             return Ok(allShutters);
         }
+
+        [HttpGet("shuttersId/{id}")]
+        public IActionResult GetShuttersById(int id)
+        {
+            var shutters = _repository.GetShuttersById(id);
+            if (shutters == null)
+            {
+                return NotFound("That shutter option does not exist");
+            }
+            return Ok(shutters);
+        }
     }
 }

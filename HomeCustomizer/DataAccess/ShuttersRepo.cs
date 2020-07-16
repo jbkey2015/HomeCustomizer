@@ -25,5 +25,19 @@ namespace HomeCustomizer.DataAccess
                 return db.Query<Shutters>("select * from shutters");
             }
         }
+
+        public Shutters GetShuttersById(int id)
+        {
+            var sql = @"select *
+                        from Shutters
+                        where id = @id";
+
+            var parameters = new { Id = id };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                return db.QueryFirstOrDefault<Shutters>(sql, parameters);
+            }
+        }
     }
 }
