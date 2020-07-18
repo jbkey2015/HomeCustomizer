@@ -27,6 +27,12 @@ namespace HomeCustomizer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(options =>
+                options.AddPolicy("ItsAllGood",
+                    builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
+            );
+
             services.AddTransient<ShuttersRepo>();
             services.AddTransient<SidingRepo>();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -43,6 +49,8 @@ namespace HomeCustomizer
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("ItsAllGood");
 
             app.UseAuthorization();
 
