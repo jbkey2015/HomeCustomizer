@@ -7,5 +7,8 @@ namespace HomeCustomizer.Models
 {
     public class Siding
     {
+        public int ID { get; set; }
+        public string ImageUrl { get; set; }
+        public string Color { get; set; }
     }
 }

@@ -2,46 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeCustomizer.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HomeCustomizer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/siding")]
     [ApiController]
     public class SidingController : ControllerBase
     {
-        // GET: api/<SidingController>
+        SidingRepo _repository;
+
+        public SidingController(SidingRepo repository)
+        {
+            _repository = repository;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetSiding()
         {
-            return new string[] { "value1", "value2" };
+            var allSiding = _repository.GetAllSiding();
+
+            return Ok(allSiding);
         }
 
-        // GET api/<SidingController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("sidingId/{id}")]
+        public IActionResult GetSidingById(int id)
         {
-            return "value";
-        }
-
-        // POST api/<SidingController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<SidingController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<SidingController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var siding = _repository.GetSidingById(id);
+            if (siding == null)
+            {
+                return NotFound("That siding option does not exist");
+            }
+            return Ok(siding);
         }
     }
 }
