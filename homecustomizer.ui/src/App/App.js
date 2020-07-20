@@ -5,7 +5,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import Home from '../components/pages/Home/Home';
-import Siding from '../components/pages/Siding/Siding';
+import AllSiding from '../components/pages/AllSiding/AllSiding';
 import AllShutters from '../components/pages/AllShutters/AllShutters';
 import MyNavbar from '../components/pages/MyNavbar/MyNavbar';
 import './App.scss';
@@ -17,7 +17,7 @@ function App() {
           <MyNavbar />
           <Switch>
             <Route path="/home" exact component={Home}/>
-            <Route path="/siding" exact component={Siding}/>
+            <Route path="/siding" exact component={AllSiding}/>
             <Route path="/shutters" exact component={AllShutters}/>
           </Switch>
         </Router>
