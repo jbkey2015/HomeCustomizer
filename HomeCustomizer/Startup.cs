@@ -35,6 +35,7 @@ namespace HomeCustomizer
 
             services.AddTransient<ShuttersRepo>();
             services.AddTransient<SidingRepo>();
+            services.AddTransient<CustomHomeRepo>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
