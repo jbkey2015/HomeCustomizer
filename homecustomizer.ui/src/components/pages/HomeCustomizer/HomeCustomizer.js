@@ -5,22 +5,22 @@ import ColorBoard from '../../shared/ColorBoard/ColorBoard';
 
 class HomeCustomizer extends React.Component {
   state = {
-    colorBoard: [],
+    colorBoards: [],
   }
 
   componentDidMount() {
     colorBoardData.getAllColorBoards()
-      .then((colorBoard) => this.setState({ colorBoard }))
+      .then((colorBoards) => this.setState({ colorBoards }))
       .catch((err) => console.error('error from get all color boards', err));
   }
 
   render() {
-    const { colorBoard } = this.state;
+    const { colorBoards } = this.state;
     return (
       <div className="AllColorBoards">
         <div>
           <div className="color-board-card-container">
-          {colorBoard.map((colorBoard) => <ColorBoard key={colorBoard.id} colorBoard={colorBoard} />)}
+          {colorBoards.map((colorBoard) => <ColorBoard key={colorBoard.id} colorBoard={colorBoard} />)}
           </div>
         </div>
       </div>

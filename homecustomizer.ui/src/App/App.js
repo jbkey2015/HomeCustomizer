@@ -22,7 +22,7 @@ function App() {
             <Route path="/homeCustomizer" exact component={HomeCustomizer}/>
             <Route path="/siding" exact component={AllSiding}/>
             <Route path="/shutters" exact component={AllShutters}/>
-            <Route path="/singleCustomHome" exact component={SingleCustomHome}/>
+            <Route path="/customHome/:colorBoardId(\d+)" exact component={SingleCustomHome}/>
           </Switch>
         </Router>
       </div>

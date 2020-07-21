@@ -6,4 +6,10 @@ const getAllColorBoards = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getAllColorBoards };
+const getColorBoardById = (id) => new Promise((resolve, reject) => {
+  axios.get(`https://localhost:44334/api/colorBoard/colorBoardId/${id}`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
+export default { getAllColorBoards, getColorBoardById };
