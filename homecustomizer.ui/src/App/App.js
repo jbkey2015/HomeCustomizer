@@ -9,6 +9,7 @@ import AllSiding from '../components/pages/AllSiding/AllSiding';
 import AllShutters from '../components/pages/AllShutters/AllShutters';
 import MyNavbar from '../components/pages/MyNavbar/MyNavbar';
 import HomeCustomizer from '../components/pages/HomeCustomizer/HomeCustomizer';
+import SingleCustomHome from '../components/pages/SingleCustomHome/SingleCustomHome';
 import './App.scss';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/homeCustomizer" exact component={HomeCustomizer}/>
             <Route path="/siding" exact component={AllSiding}/>
             <Route path="/shutters" exact component={AllShutters}/>
+            <Route path="/singleCustomHome" exact component={SingleCustomHome}/>
           </Switch>
         </Router>
       </div>
