@@ -37,6 +37,7 @@ namespace HomeCustomizer
             services.AddTransient<SidingRepo>();
             services.AddTransient<CustomHomeRepo>();
             services.AddTransient<ColorBoardRepo>();
+            services.AddTransient<CommunityRepo>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
