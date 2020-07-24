@@ -18,7 +18,7 @@ function App() {
         <Router>
           <MyNavbar />
           <Switch>
-            <Route path="/home" exact component={Home}/>
+            <Route path="/" exact component={Home}/>
             <Route path="/homeCustomizer" exact component={HomeCustomizer}/>
             <Route path="/siding" exact component={AllSiding}/>
             <Route path="/shutters" exact component={AllShutters}/>

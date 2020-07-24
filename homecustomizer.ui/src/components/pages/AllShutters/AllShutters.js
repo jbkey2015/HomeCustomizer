@@ -19,7 +19,7 @@ class AllShutters extends React.Component {
     return (
       <div className="AllShutters">
         <div>
-          <div className="shutter-card-container">
+          <div className="shutters d-flex flex-wrap">
           {shutters.map((shutter) => <Shutters key={shutter.id} shutter={shutter} />)}
           </div>
         </div>

@@ -18,8 +18,9 @@ class HomeCustomizer extends React.Component {
     const { colorBoards } = this.state;
     return (
       <div className="AllColorBoards">
+        <h1>Color Boards</h1>
         <div>
-          <div className="color-board-card-container">
+          <div className="shutters d-flex flex-wrap">
           {colorBoards.map((colorBoard) => <ColorBoard key={colorBoard.id} colorBoard={colorBoard} />)}
           </div>
         </div>
