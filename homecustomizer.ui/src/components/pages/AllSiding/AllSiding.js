@@ -19,7 +19,7 @@ class AllSiding extends React.Component {
     return (
       <div className="AllSiding">
         <div>
-          <div className="siding-card-container">
+          <div className="siding d-flex flex-wrap">
           {siding.map((siding) => <Siding key={siding.id} siding={siding} />)}
           </div>
         </div>
