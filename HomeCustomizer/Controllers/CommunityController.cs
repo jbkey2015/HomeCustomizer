@@ -38,5 +38,13 @@ namespace HomeCustomizer.Controllers
             }
             return Ok(communities);
         }
+
+        [HttpGet("communitiesAvailableHomes/{id}")]
+        public IActionResult GetAvailableHomesByCommunityId(int id)
+        {
+            var allAvailableHomesByCommunity = _repository.GetAvailableHomesByCommunityId(id);
+
+            return Ok(allAvailableHomesByCommunity);
+        }
     }
 }
