@@ -11,6 +11,7 @@ import MyNavbar from '../components/pages/MyNavbar/MyNavbar';
 import HomeCustomizer from '../components/pages/HomeCustomizer/HomeCustomizer';
 import SingleCustomHome from '../components/pages/SingleCustomHome/SingleCustomHome';
 import './App.scss';
+import CommunitiesAvailableHomes from '../components/pages/CommunitiesAvailableHomes/CommunitiesAvailableHomes';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/siding" exact component={AllSiding}/>
             <Route path="/shutters" exact component={AllShutters}/>
             <Route path="/customHome/:colorBoardId(\d+)" exact component={SingleCustomHome}/>
+            <Route path="/availableHomes/:communityId(\d+)" exact component={CommunitiesAvailableHomes}/>
           </Switch>
         </Router>
       </div>
