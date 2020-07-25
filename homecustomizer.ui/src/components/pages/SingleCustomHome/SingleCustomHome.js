@@ -17,11 +17,9 @@ class SingleCustomHome extends React.Component {
   }
 
   componentDidMount() {
-    const { colorBoardId } = this.props.match.params;
-    
+    const { colorBoardId } = this.props.match.params;    
     colorBoardData.getColorBoardById(Number(colorBoardId))
-      .then((response) => {
-       
+      .then((response) => {       
         this.setState({ colorBoard: response.data });
         this.getCustomHomeData(this.state.colorBoard.id);
       })
