@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HomeCustomizer.DataAccess;
+using HomeCustomizer.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,10 +15,12 @@ namespace HomeCustomizer.Controllers
     public class CommunityController : ControllerBase
     {
         CommunityRepo _repository;
+        AvailableHomesRepo _availableHomesRepo;
 
-        public CommunityController(CommunityRepo repository)
+        public CommunityController(CommunityRepo repository, AvailableHomesRepo repo)
         {
             _repository = repository;
+            _availableHomesRepo = repo;
         }
 
         [HttpGet]
@@ -43,8 +46,18 @@ namespace HomeCustomizer.Controllers
         public IActionResult GetAvailableHomesByCommunityId(int id)
         {
             var allAvailableHomesByCommunity = _repository.GetAvailableHomesByCommunityId(id);
+            List<AvailableHomes> availableHomes = new List<AvailableHomes>();
 
-            return Ok(allAvailableHomesByCommunity);
+            if(allAvailableHomesByCommunity != null)
+            {
+                foreach(var home in allAvailableHomesByCommunity)
+                {
+                    availableHomes.Add(_availableHomesRepo.GetAvailableHomesById(home.AvailableHomesId));
+                }
+                return Ok(availableHomes);
+            }
+            return NotFound();
+
         }
     }
 }
