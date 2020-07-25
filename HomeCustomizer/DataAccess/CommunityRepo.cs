@@ -40,6 +40,19 @@ namespace HomeCustomizer.DataAccess
             }
         }
 
+        public IEnumerable<CommunitiesAvailableHomes> GetAvailableHomesByCommunityId(int communityId)
+        {
+            var sql = @"select * 
+                        from CommunitiesAvailableHomes
+                        where CommunityId = @CommunityId";
+
+            var parameters = new { CommunityId = communityId };
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                return db.Query<CommunitiesAvailableHomes>(sql, parameters);
+            }
+        }
+
 
     }
 }

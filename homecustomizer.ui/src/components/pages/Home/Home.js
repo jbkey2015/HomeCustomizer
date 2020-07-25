@@ -19,7 +19,7 @@ class Home extends React.Component {
     return (
       <div className="HomePage">
         <div>
-          <div className="homeCommunities d-flex flex-wrap">
+          <div className="Communities d-flex flex-wrap">
           {communities.map((community) => <Community key={community.id} community={community} />)}
           </div>
         </div>
