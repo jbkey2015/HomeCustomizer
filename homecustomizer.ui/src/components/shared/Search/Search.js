@@ -50,12 +50,10 @@ class Search extends React.Component {
       });
   };
 
-  isEmptyOrSpaces = (str) => {
-    return str === null || str.match(/^ *$/) !== null;
-}
   componentDidMount() {
     // const query = event.target.value;
-    if (this.isEmptyOrSpaces(this.state.query)) {
+    if ( this.state.query === '' ) {
+      debugger
       this.props.toggle()
       this.setState({  results: {}, message: '' } );
     } else {
@@ -72,7 +70,7 @@ class Search extends React.Component {
         <div className="results-container">
           {results.map((result) => {
             return (
-              <a key={result.id} href={result.imageUrl} className="result-items">
+              <a key={result.colorBoard.id} href={result.imageUrl} className="result-items">
                 <div className="image-wrapper">
                   <img className="image" src={result.imageUrl} alt=""/>
                 </div>
