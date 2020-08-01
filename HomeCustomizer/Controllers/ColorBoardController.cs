@@ -37,5 +37,16 @@ namespace HomeCustomizer.Controllers
             }
             return Ok(colorBoards);
         }
+
+        [HttpGet("{query}")]
+        public IActionResult GetFilterdColorBoards(string query)
+        {
+            var colorBoards = _repository.GetAllColorBoards();
+            var filteredBoards = colorBoards
+                .Where(cb => cb.SidingColor.ToLower().Contains(query.ToLower()) || cb.ShutterColor.ToLower().Contains(query.ToLower()))
+                .Select(cb => cb).ToList();
+
+            return Ok(filteredBoards);
+        }
     }
 }
