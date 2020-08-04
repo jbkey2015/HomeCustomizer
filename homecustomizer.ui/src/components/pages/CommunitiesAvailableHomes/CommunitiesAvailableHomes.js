@@ -10,12 +10,9 @@ class CommunitiesAvailableHomes extends React.Component {
   }
 
   getCommunitiesAvailableHomeData = (CommunityId) => {
-    debugger
     communityData.getAvailableHomesByCommunityId(CommunityId)
       .then((availableHomes) => {
         this.setState({ availableHomes:availableHomes.data })
-        debugger
-        console.log(this.state.availableHomes)
       })
       .catch((err) => console.error('error in get available homes by community id', err));
   }

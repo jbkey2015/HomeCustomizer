@@ -20,7 +20,7 @@ function App() {
           <MyNavbar />
           <Switch>
             <Route path="/" exact component={Home}/>
-            <Route path="/homeCustomizer" exact component={HomeCustomizer}/>
+            <Route path="/colorBoard/:availableHomesId(\d+)" exact component={HomeCustomizer}/>
             <Route path="/siding" exact component={AllSiding}/>
             <Route path="/shutters" exact component={AllShutters}/>
             <Route path="/customHome/:colorBoardId(\d+)" exact component={SingleCustomHome}/>
