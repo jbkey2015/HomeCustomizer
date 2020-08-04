@@ -35,9 +35,11 @@ class CommunitiesAvailableHomes extends React.Component {
       availableHomes
     } = this.state;
     return (
-      <div className="availableHome-outer-container">
-        <div className="availableHomes-card-container">
+      <div className="AvailableHomesPage">
+        <div>
+          <div className="AvailableHomes d-flex flex-wrap">
           {availableHomes.map((availableHomes) => <AvailableHomes key={availableHomes.id} availableHomes={availableHomes} />) }
+          </div>
         </div>
       </div>
     );

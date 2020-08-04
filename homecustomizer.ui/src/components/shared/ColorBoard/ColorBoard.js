@@ -9,7 +9,7 @@ class ColorBoard extends React.Component {
     const { imageUrl } = this.props.colorBoard;
     return (
       <div className="ColorBoard col-4">
-      <div className="card">
+      <div className="colorBoardCard card">
         <Link to={`/customHome/${this.props.colorBoard.id}`}>
         <div className="card-body">
           <img src={imageUrl} className="card-img-top" alt=""/>
