@@ -48,5 +48,13 @@ namespace HomeCustomizer.Controllers
 
             return Ok(filteredBoards);
         }
+
+        [HttpGet("availableHomesId/{id}")]
+        public IActionResult GetColorBoardByAvailableHomesId(int id)
+        {
+            var allColorBoardsByAvailableHomes = _repository.GetColorBoardByAvailableHomesId(id);
+
+            return Ok(allColorBoardsByAvailableHomes);
+        }
     }
 }
