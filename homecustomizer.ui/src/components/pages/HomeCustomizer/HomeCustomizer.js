@@ -47,9 +47,11 @@ class HomeCustomizer extends React.Component {
     const { colorBoards } = this.state;
     return (
       <div className="AllColorBoards">
-        <form className="form-inline my-2 my-lg-0">
-          <input id="myInput" className="form-control mr-sm-2" value={this.state.colorSearch} onChange={this.dynamicSearch} type="search" placeholder="Search" aria-label="Search"></input>
-        </form>
+        <div className="SearchBar text-center">
+          <form className="form-inline center my-2 my-lg-6">
+            <input id="myInput" className="form-control mr-sm-2" value={this.state.colorSearch} onChange={this.dynamicSearch} type="search" placeholder="Search" aria-label="Search"></input>
+          </form>
+        </div>
         {
           !this.state.wantsToSearch ?
           <div>
@@ -60,7 +62,7 @@ class HomeCustomizer extends React.Component {
             </div>
           </div>
           :
-          <div>
+          <div className="colorBoards d-flex flex-wrap">
             {this.state.resultSearch.map((colorBoard) => <ColorBoard key={colorBoard.id} colorBoard={colorBoard} />)}
           </div>
         }
