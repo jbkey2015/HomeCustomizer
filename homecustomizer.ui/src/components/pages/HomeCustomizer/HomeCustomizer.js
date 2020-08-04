@@ -2,6 +2,7 @@ import './HomeCustomizer.scss';
 import React from 'react';
 import colorBoardData from '../../../helpers/data/colorBoardData';
 import ColorBoard from '../../shared/ColorBoard/ColorBoard';
+import availableHomesData from '../../../helpers/data/availableHomesData';
 
 class HomeCustomizer extends React.Component {
   state = {
@@ -9,13 +10,26 @@ class HomeCustomizer extends React.Component {
     colorSearch: "",
     resultSearch: [],
     wantsToSearch: false,
+    availableHomes: {},
+  }
+
+  getColorBoardsByAvailableHomesData = (AvailableHomesId) => {
+    colorBoardData.getColorBoardsByAvailableHomesId(AvailableHomesId)
+      .then((colorBoards) => {
+        this.setState({ colorBoards:colorBoards.data })
+      })
+      .catch((err) => console.error('error in get color boards by available homes id', err));
   }
 
   
   componentDidMount() {
-    colorBoardData.getAllColorBoards()
-      .then((colorBoards) => this.setState({ colorBoards }))
-      .catch((err) => console.error('error from get all color boards', err));
+    const { availableHomesId } = this.props.match.params; 
+    availableHomesData.getAvailableHomesById(Number(availableHomesId))
+      .then((response) => {  
+        this.setState({ availableHomes: response.data });
+        this.getColorBoardsByAvailableHomesData(this.state.availableHomes.id);
+      })
+      .catch((err) => console.error('error in get single available home', err));
   }
 
   dynamicSearch = (event) => {
@@ -33,8 +47,8 @@ class HomeCustomizer extends React.Component {
     const { colorBoards } = this.state;
     return (
       <div className="AllColorBoards">
-        <form class="form-inline my-2 my-lg-0">
-          <input id="myInput" class="form-control mr-sm-2" value={this.state.colorSearch} onChange={this.dynamicSearch} type="search" placeholder="Search" aria-label="Search"></input>
+        <form className="form-inline my-2 my-lg-0">
+          <input id="myInput" className="form-control mr-sm-2" value={this.state.colorSearch} onChange={this.dynamicSearch} type="search" placeholder="Search" aria-label="Search"></input>
         </form>
         {
           !this.state.wantsToSearch ?

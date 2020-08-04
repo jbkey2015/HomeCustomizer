@@ -10,7 +10,7 @@ class AvailableHomes extends React.Component {
     return (
       <div className="AvailableHomes col-4">
       <div className="card">
-      <Link to={`/homeCustomizer`}>
+      <Link to={`/colorBoard/${this.props.availableHomes.id}`}>
         <div className="card-body">
           <img src={imageUrl} className="card-img-top" alt=""/>
         </div>
