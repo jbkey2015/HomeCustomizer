@@ -39,5 +39,18 @@ namespace HomeCustomizer.DataAccess
                 return db.QueryFirstOrDefault<ColorBoard>(sql, parameters);
             }
         }
+
+        public IEnumerable<ColorBoard> GetColorBoardByAvailableHomesId(int availableHomesId)
+        {
+            var sql = @"select * 
+                        from ColorBoard
+                        where AvailableHomesId = @AvailableHomesId";
+
+            var parameters = new { AvailableHomesId = availableHomesId };
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                return db.Query<ColorBoard>(sql, parameters);
+            }
+        }
     }
 }
