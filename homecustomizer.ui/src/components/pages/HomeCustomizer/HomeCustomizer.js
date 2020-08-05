@@ -39,6 +39,8 @@ class HomeCustomizer extends React.Component {
         return cBoard.sidingColor.toLowerCase().includes(colorSearch.toLowerCase()) ||  cBoard.shutterColor.toLowerCase().includes(colorSearch.toLowerCase())
       });
       this.setState({resultSearch: filteredColorBoards, wantsToSearch: true});
+    }else{
+      this.setState({wantsToSearch:false})
     }
     this.setState({ colorSearch: colorSearch })
   }
